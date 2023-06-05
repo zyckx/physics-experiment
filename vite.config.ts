@@ -1,25 +1,40 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 export default defineConfig({
 	plugins: [
 		vue(),
 		AutoImport({
-			imports: ['vue', 'vue-router', '@vueuse/core'],
+			imports: [
+				'vue',
+				'vue-router',
+				'@vueuse/core',
+				{
+					'naive-ui': [
+						'useDialog',
+						'useMessage',
+						'useNotification',
+						'useLoadingBar',
+					],
+				},
+			],
 			dts: 'src/auto-imports.d.ts',
 			eslintrc: {
 				enabled: true,
 			},
-			resolvers: [ElementPlusResolver()],
 		}),
 		Components({
-			resolvers: [ElementPlusResolver()],
+			resolvers: [NaiveUiResolver()],
 		}),
 	],
+	//配置别名
+	resolve: {
+		alias: {
+			'@': '/src',
+		},
+	},
 	server: {
 		proxy: {
 			'/api': {

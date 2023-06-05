@@ -1,9 +1,7 @@
 <template>
-	<el-backtop :bottom="50" :right="30" :visibility-height="280">
-		<svg class="icon" aria-hidden="true">
-			<use xlink:href="#icon-huojian"></use>
-		</svg>
-	</el-backtop>
+	<div class="back-top">
+		<n-back-top :bottom="100" />
+	</div>
 </template>
 
 <script setup lang="ts"></script>

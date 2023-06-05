@@ -5,7 +5,7 @@
 				<div class="logo">
 					<router-link to="/">
 						<img src="../../assets/logo.png" alt="logo" />
-						<span class="logo-name">次元视觉</span>
+						<span class="logo-name">物理实验提交系统</span>
 					</router-link>
 				</div>
 
@@ -89,13 +89,13 @@
 import { useUserStore } from '../../store/UserStore'
 import { loginOut } from '../../api/User/login'
 import { delCookie } from '../../utils/handleCookie'
-import { getNav } from '../../api/text'
+
 const userStore = useUserStore()
 const router = useRouter()
 const MenuIsOpen = ref(false)
 const navList = ref([
 	{
-		title: '图像处理',
+		title: '首页',
 		link: '/',
 		son: [
 			{
@@ -103,6 +103,10 @@ const navList = ref([
 				link: '/',
 			},
 		],
+	},
+	{
+		title: '题目',
+		link: '/timu',
 	},
 ])
 
@@ -113,16 +117,12 @@ router.afterEach(() => {
 	MenuIsOpen.value = false
 })
 const getNavLists = () => {
-	getNav().then((res) => {
-		if (res.code === 1000) {
-			navList.value = res.data
-		}
-	})
+	//
 }
 const logOut = async () => {
 	await loginOut().then((res) => {
 		if (res.code === 1) {
-			ElMessage.success('退出成功')
+			// ElMessage.success('退出成功')
 			router.push('/login')
 			userStore.loginOut()
 			delCookie('ticket')
@@ -158,7 +158,7 @@ header {
 	}
 
 	.header_container {
-		max-width: 1400px;
+		max-width: 1200px;
 		padding: 0 10px;
 		height: 100%;
 		margin: 0 auto;
@@ -178,7 +178,7 @@ header {
 					display: flex;
 					align-items: center;
 					height: 100%;
-					color: #409eff;
+					color: #000;
 
 					img {
 						width: 40px;
@@ -222,7 +222,7 @@ header {
 						a {
 							font-size: 18px;
 							font-weight: 400;
-							color: #409eff;
+							color: #000;
 						}
 
 						&.login-wrap {

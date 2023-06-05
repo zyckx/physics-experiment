@@ -1,16 +1,14 @@
 <template>
-	<el-carousel
+	<div>1</div>
+	<!-- <el-carousel
 		trigger="click"
 		height="500px"
 		arrow="always"
-		:pause-on-hover="true"
-	>
+		:pause-on-hover="true">
 		<el-carousel-item v-for="item in swiperList.data" :key="item.title">
 			<img :src="item.image" alt="" />
 		</el-carousel-item>
-	</el-carousel>
-
-	<!-- <div class="test"></div> -->
+	</el-carousel> -->
 </template>
 <script setup lang="ts">
 import { getSwiper } from '../../api/images'
