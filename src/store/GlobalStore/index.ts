@@ -1,13 +1,20 @@
 import { defineStore } from 'pinia'
 
-export const useUserStore = defineStore({
+interface INavList {
+	title: string
+	link: string
+	icon?: string
+}
+export const useGlobalStore = defineStore({
 	id: 'user',
 	state: () => ({
 		userInfo: {
 			username: '',
 			avatar: '',
-			email: '',
+			role: '1',
 		},
+		NavList: [] as INavList[],
+		Role: '',
 		IsLogin: false,
 	}),
 	actions: {
@@ -16,7 +23,7 @@ export const useUserStore = defineStore({
 			this.userInfo = {
 				username: '',
 				avatar: '',
-				email: '',
+				role: '',
 			}
 		},
 	},

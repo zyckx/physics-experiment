@@ -58,7 +58,35 @@
 </template>
 
 <script setup lang="ts">
+import { useGlobalStore } from '@/store/GlobalStore'
 const router = useRouter()
+const store = useGlobalStore()
+const studentNavList = [
+	{
+		title: '首页',
+		link: '/',
+		icon: 'home',
+	},
+	{
+		title: '题目',
+		link: '/paper',
+	},
+]
+const teacherNavList = [
+	{
+		title: '首页',
+		link: '/',
+		icon: 'home',
+	},
+	{
+		title: '题目管理',
+		link: '/paper-manage',
+	},
+	{
+		title: '批阅报告',
+		link: '/report-manage',
+	},
+]
 
 const loginLoading = ref(false)
 const formRef = ref()
@@ -101,6 +129,9 @@ const rememberMe = ref(false)
 
 const handleSubmit = async () => {
 	router.push('/')
+	store.IsLogin = true
+	store.NavList = model.role === '1' ? studentNavList : teacherNavList
+	store.Role = model.role
 }
 const handleLoginOtherAccount = (type: string) => {
 	console.log(type)

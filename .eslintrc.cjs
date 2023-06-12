@@ -26,6 +26,7 @@ module.exports = {
 		'vue/multi-word-component-names': 'off', // 组件名必须为多个单词
 		'@typescript-eslint/no-var-requires': 'off', // 禁止使用require
 		'@typescript-eslint/no-explicit-any': 'off', // 禁止使用any类型
+		'@typescript-eslint/ban-ts-comment': 'off', // 禁止使用@ts-nocheck
 		// 'prettier/prettier': 'off',
 		'@typescript-eslint/ban-types': [
 			'error',

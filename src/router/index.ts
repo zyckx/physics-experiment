@@ -11,6 +11,13 @@ const routes: Array<RouteRecordRaw> = [
 				name: 'index',
 				component: () => import('../views/index/index.vue'),
 			},
+			//学生路由
+			{
+				path: '/examination-paper',
+				name: '所有实验',
+				component: () =>
+					import('../views/Students/ExaminationPaper.vue'),
+			},
 		],
 	},
 	{
@@ -18,6 +25,7 @@ const routes: Array<RouteRecordRaw> = [
 		name: 'login',
 		component: () => import('../views/Login/Login.vue'),
 	},
+
 	{
 		path: '/:catchAll(.*)',
 		name: '404',

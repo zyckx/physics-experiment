@@ -4,7 +4,7 @@
 			<div class="header_content">
 				<div class="logo">
 					<router-link to="/">
-						<img src="../../assets/logo.png" alt="logo" />
+						<!-- <img src="../../assets/logo.png" alt="logo" /> -->
 						<span class="logo-name">物理实验提交系统</span>
 					</router-link>
 				</div>
@@ -35,6 +35,9 @@
 								:to="nav.link"
 								:class="{ active: $route.path === nav.link }"
 							>
+								<template v-if="nav.icon">
+									<svg-icon :icon-class="nav.icon" />
+								</template>
 								<span>{{ nav.title }}</span>
 							</router-link>
 						</h2>
@@ -86,17 +89,18 @@
 	</header>
 </template>
 <script setup lang="ts">
-import { useUserStore } from '../../store/UserStore'
+import { useGlobalStore } from '../../store/GlobalStore'
 import { loginOut } from '../../api/User/login'
 import { delCookie } from '../../utils/handleCookie'
 
-const userStore = useUserStore()
+const userStore = useGlobalStore()
 const router = useRouter()
 const MenuIsOpen = ref(false)
 const navList = ref([
 	{
 		title: '首页',
 		link: '/',
+		icon: 'home',
 		son: [
 			{
 				title: '图像处理',
@@ -107,6 +111,7 @@ const navList = ref([
 	{
 		title: '题目',
 		link: '/timu',
+		icon: 'home',
 	},
 ])
 

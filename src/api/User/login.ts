@@ -2,7 +2,7 @@ import http from '../../axios'
 import type { Response } from '../../axios'
 export const login = (data: any, params: any) => {
 	//传递多个params参数
-	return http.post<Response>('/login', data, { params })
+	return http.post<Response>('/user/login', data, { params })
 }
 export const getCaptcha = async () => {
 	//设置请求图片的header
@@ -10,5 +10,5 @@ export const getCaptcha = async () => {
 	return URL.createObjectURL(imgResponse)
 }
 export const loginOut = () => {
-	return http.get<Response>('/logout')
+	return http.get<Response>('/user/logout')
 }
