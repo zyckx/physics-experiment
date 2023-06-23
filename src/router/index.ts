@@ -3,12 +3,12 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
 	{
 		path: '/',
-		name: 'baseLayout',
+		name: '首页',
 		component: () => import('../Layout/baseLayout.vue'),
 		children: [
 			{
 				path: '/',
-				name: 'index',
+				name: '',
 				component: () => import('../views/index/index.vue'),
 			},
 			//学生路由

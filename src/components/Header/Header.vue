@@ -72,7 +72,7 @@
 										</router-link>
 									</div>
 									<div class="submenu_item">
-										<span @click="logOut()">退出登录</span>
+										<a @click="logOut()">退出登录</a>
 									</div>
 								</div>
 							</template>
@@ -96,24 +96,7 @@ import { delCookie } from '../../utils/handleCookie'
 const userStore = useGlobalStore()
 const router = useRouter()
 const MenuIsOpen = ref(false)
-const navList = ref([
-	{
-		title: '首页',
-		link: '/',
-		icon: 'home',
-		son: [
-			{
-				title: '图像处理',
-				link: '/',
-			},
-		],
-	},
-	{
-		title: '题目',
-		link: '/timu',
-		icon: 'home',
-	},
-])
+const navList = userStore.NavList
 
 const headerIsFixed = ref(false)
 
@@ -125,14 +108,18 @@ const getNavLists = () => {
 	//
 }
 const logOut = async () => {
-	await loginOut().then((res) => {
-		if (res.code === 1) {
-			// ElMessage.success('退出成功')
-			router.push('/login')
-			userStore.loginOut()
-			delCookie('ticket')
-		}
-	})
+	// await loginOut().then((res) => {
+	// 	if (res.code === 1) {
+	// 		// ElMessage.success('退出成功')
+	// 		router.push('/login')
+	// 		userStore.loginOut()
+	// 		delCookie('ticket')
+	// 	}
+	// })
+	router.push('/login')
+	userStore.loginOut()
+	// @ts-ignore
+	ElMessage.success('退出成功')
 }
 const handleScroll = () => {
 	const scrollTop =
@@ -232,7 +219,9 @@ header {
 
 						&.login-wrap {
 							position: relative;
-
+							a {
+								display: flex;
+							}
 							img {
 								width: 40px;
 								height: 40px;

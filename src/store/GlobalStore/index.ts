@@ -4,6 +4,7 @@ interface INavList {
 	title: string
 	link: string
 	icon?: string
+	son?: INavList[]
 }
 export const useGlobalStore = defineStore({
 	id: 'user',
@@ -14,7 +15,6 @@ export const useGlobalStore = defineStore({
 			role: '1',
 		},
 		NavList: [] as INavList[],
-		Role: '',
 		IsLogin: false,
 	}),
 	actions: {

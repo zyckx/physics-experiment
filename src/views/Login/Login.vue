@@ -26,9 +26,12 @@
 				<!-- 选择身份 -->
 				<n-form-item>
 					<n-select
+						v-model:value="model.role"
 						:options="options"
+						placeholder="请选择身份"
 						:reset-menu-on-options-change="false"
 						@scroll="handleScroll"
+						@on-update:value="handleUpdateValue"
 					/>
 				</n-form-item>
 				<n-space :vertical="true" :size="24">
@@ -93,12 +96,19 @@ const formRef = ref()
 const forgetPwd = () => {
 	router.push('/forgetPwd')
 }
+const handleUpdateValue = (val: any) => {
+	console.log(val)
+}
 const model = reactive({
 	userName: '',
 	password: '',
-	role: '1',
+	role: '0',
 })
 const options = [
+	{
+		label: '请选择身份',
+		value: '0',
+	},
 	{
 		label: '学生',
 		value: '1',
@@ -128,10 +138,15 @@ const rules = reactive({
 const rememberMe = ref(false)
 
 const handleSubmit = async () => {
+	if (model.role === '0') {
+		ElMessage.error('请选择身份')
+		return
+	}
 	router.push('/')
 	store.IsLogin = true
 	store.NavList = model.role === '1' ? studentNavList : teacherNavList
-	store.Role = model.role
+	store.userInfo.role = model.role
+	console.log(store.NavList)
 }
 const handleLoginOtherAccount = (type: string) => {
 	console.log(type)

@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 export default defineConfig({
 	plugins: [
 		vue(),
@@ -20,13 +21,14 @@ export default defineConfig({
 					],
 				},
 			],
+			resolvers: [ElementPlusResolver()],
 			dts: 'src/auto-imports.d.ts',
 			eslintrc: {
 				enabled: true,
 			},
 		}),
 		Components({
-			resolvers: [NaiveUiResolver()],
+			resolvers: [NaiveUiResolver(), ElementPlusResolver()],
 		}),
 	],
 	//配置别名
