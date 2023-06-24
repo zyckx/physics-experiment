@@ -90,8 +90,6 @@
 </template>
 <script setup lang="ts">
 import { useGlobalStore } from '../../store/GlobalStore'
-import { loginOut } from '../../api/User/login'
-import { delCookie } from '../../utils/handleCookie'
 
 const userStore = useGlobalStore()
 const router = useRouter()

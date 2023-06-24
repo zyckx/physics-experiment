@@ -25,6 +25,7 @@ export const useGlobalStore = defineStore({
 				avatar: '',
 				role: '',
 			}
+			this.NavList = []
 		},
 	},
 	persist: {

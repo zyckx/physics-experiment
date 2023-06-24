@@ -9,12 +9,26 @@ const routes: Array<RouteRecordRaw> = [
 			{
 				path: '/',
 				name: '',
+				meta: {
+					requireAuth: true,
+				},
 				component: () => import('../views/index/index.vue'),
 			},
 			//学生路由
 			{
+				path: '/experiments',
+				name: '实验',
+				meta: {
+					requireAuth: true,
+				},
+				component: () => import('../views/Students/Experiments.vue'),
+			},
+			{
 				path: '/examination-paper',
 				name: '所有实验',
+				meta: {
+					requireAuth: true,
+				},
 				component: () =>
 					import('../views/Students/ExaminationPaper.vue'),
 			},
@@ -47,14 +61,17 @@ router.beforeEach((to, from, next) => {
 		// 检查权限路由
 		if (to.meta.requireAuth) {
 			// 检查cookie
-			if (document.cookie.indexOf('ticket') === -1) {
+			// if (document.cookie.indexOf('ticket') === -1) {
+			const user = JSON.parse(sessionStorage.getItem('user') || '{}')
+			console.log(user)
+
+			if (user.IsLogin === null) {
 				// ElMessage.error('请登录')
 				next('/login')
 			} else {
 				next()
 			}
 		}
-		next()
 	}
 })
 export default router

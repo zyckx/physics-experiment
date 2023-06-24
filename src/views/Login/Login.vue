@@ -54,7 +54,6 @@
 						确定
 					</n-button>
 				</n-space>
-				<other-account @login="handleLoginOtherAccount" />
 			</n-form>
 		</n-card>
 	</div>
@@ -72,7 +71,7 @@ const studentNavList = [
 	},
 	{
 		title: '题目',
-		link: '/paper',
+		link: '/experiments',
 	},
 ]
 const teacherNavList = [
@@ -139,6 +138,7 @@ const rememberMe = ref(false)
 
 const handleSubmit = async () => {
 	if (model.role === '0') {
+		// @ts-ignore
 		ElMessage.error('请选择身份')
 		return
 	}
@@ -147,9 +147,6 @@ const handleSubmit = async () => {
 	store.NavList = model.role === '1' ? studentNavList : teacherNavList
 	store.userInfo.role = model.role
 	console.log(store.NavList)
-}
-const handleLoginOtherAccount = (type: string) => {
-	console.log(type)
 }
 </script>
 
