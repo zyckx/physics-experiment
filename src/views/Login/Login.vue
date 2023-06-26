@@ -81,12 +81,12 @@ const teacherNavList = [
 		icon: 'home',
 	},
 	{
-		title: '题目管理',
-		link: '/paper-manage',
+		title: '实验管理',
+		link: '/exp-manage',
 	},
 	{
 		title: '批阅报告',
-		link: '/report-manage',
+		link: '/review-exp',
 	},
 ]
 
@@ -150,7 +150,7 @@ const handleSubmit = async () => {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .form-wrap {
 	width: 100%;
 	max-width: 400px;

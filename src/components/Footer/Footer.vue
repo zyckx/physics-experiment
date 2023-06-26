@@ -3,15 +3,15 @@
 		<div class="footer_content">
 			<div class="footer_logo footer-content-column">
 				<div class="logo-container">
-					<img src="../../assets/logo.png" alt="" />
+					<!-- <img src="../../assets/logo.png" alt="" /> -->
 					<div class="logo-text">
-						<p class="text1">次元视觉</p>
+						<p class="text1">物理实验提交系统</p>
 						<p class="text2">
-							Mushroom stick contamination identification system
+							Physics experiment submission system
 						</p>
 					</div>
 				</div>
-				<h2>© 2020-2021 少年先疯队&nbsp;科技有限公司</h2>
+				<h2>© 2020-2023 &nbsp;物理实验提交系统</h2>
 				<!-- <h2>X公网安备 xxxxxxxxxxxxxx号 I ICP备xxxxxxxx号-1</h2> -->
 			</div>
 			<div class="about_us footer-content-column">
@@ -33,7 +33,8 @@
 				</ul>
 			</div>
 			<div class="focus_us footer-content-column">
-				<h2>实时动态与招聘信息，扫码关注我们</h2>
+				<!-- <h2>实时动态与招聘信息，扫码关注我们</h2> -->
+				<h2></h2>
 				<div class="media"></div>
 			</div>
 		</div>
@@ -42,20 +43,8 @@
 <script lang="ts" setup>
 const contactList = ref([
 	{
-		name: '媒体问询',
-		email: 'aerowangue@126.com',
-	},
-	{
-		name: '招聘相关',
-		email: 'aerowangue@126.com',
-	},
-	{
-		name: '商务合作',
-		email: 'aerowangue@126.com',
-	},
-	{
-		name: '广告相关',
-		email: 'aerowangue@126.com',
+		name: '',
+		email: '',
 	},
 ])
 </script>

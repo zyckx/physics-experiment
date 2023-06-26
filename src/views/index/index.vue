@@ -21,4 +21,8 @@ import { useGlobalStore } from '../../store/GlobalStore'
 const userStore = useGlobalStore()
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="less" scoped>
+:deep(.n-card-header__main) {
+	font-size: 25px;
+}
+</style>

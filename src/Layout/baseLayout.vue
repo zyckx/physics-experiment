@@ -9,7 +9,7 @@
 </template>
 <script setup lang="ts"></script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .main_wrap {
 	width: 100%;
 	max-width: 1200px;

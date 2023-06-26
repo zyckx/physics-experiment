@@ -32,6 +32,47 @@ const routes: Array<RouteRecordRaw> = [
 				component: () =>
 					import('../views/Students/ExaminationPaper.vue'),
 			},
+			//老师路由
+			{
+				path: '/exp-manage',
+				name: '实验管理',
+				meta: {
+					requireAuth: true,
+				},
+				component: () => import('../views/Teachers/ExpManage.vue'),
+			},
+			{
+				path: '/review-exp',
+				name: '待批阅实验',
+				meta: {
+					requireAuth: true,
+				},
+				component: () => import('../views/Teachers/ReviewExp.vue'),
+			},
+			{
+				path: '/review-class/:id',
+				name: '待批阅班级',
+				meta: {
+					requireAuth: true,
+				},
+				component: () => import('../views/Teachers/ReviewClass.vue'),
+			},
+			{
+				path: '/review-student/:id',
+				name: '待批阅学生',
+				meta: {
+					requireAuth: true,
+				},
+				component: () => import('../views/Teachers/ReviewStudent.vue'),
+			},
+			{
+				path: '/review-paper/:id',
+				name: '批阅试卷',
+				meta: {
+					requireAuth: true,
+				},
+				component: () => import('../views/Teachers/ReviewPaper.vue'),
+			},
 		],
 	},
 	{

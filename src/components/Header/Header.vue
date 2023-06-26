@@ -35,9 +35,9 @@
 								:to="nav.link"
 								:class="{ active: $route.path === nav.link }"
 							>
-								<template v-if="nav.icon">
+								<!-- <template v-if="nav.icon">
 									<svg-icon :icon-class="nav.icon" />
-								</template>
+								</template> -->
 								<span>{{ nav.title }}</span>
 							</router-link>
 						</h2>
