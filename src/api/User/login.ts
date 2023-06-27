@@ -1,8 +1,8 @@
 import http from '../../axios'
 import type { Response } from '../../axios'
-export const login = (data: any, params: any) => {
+export const login = (data: any) => {
 	//传递多个params参数
-	return http.post<Response>('/user/login', data, { params })
+	return http.post('/user/login', data)
 }
 export const getCaptcha = async () => {
 	//设置请求图片的header

@@ -41,7 +41,7 @@ export default defineConfig({
 		proxy: {
 			'/api': {
 				// target: "http://localhost:8088/api",
-				target: 'http://www.cyvision.cn/api',
+				target: 'http://localhost/',
 				changeOrigin: true, //是否跨域
 				rewrite: (path) => path.replace(/^\/api/, ''),
 			},

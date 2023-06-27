@@ -9,17 +9,17 @@
 				:show-label="false"
 				class="form"
 			>
-				<n-form-item path="userName">
+				<n-form-item path="username">
 					<n-input
-						v-model:value="model.userName"
+						v-model:value="model.username"
 						placeholder="请输入用户名"
 					/>
 				</n-form-item>
-				<n-form-item path="password">
+				<n-form-item path="pwd">
 					<n-input
-						v-model:value="model.password"
+						v-model:value="model.pwd"
 						type="password"
-						show-password-on="click"
+						show-pwd-on="click"
 						placeholder="请输入密码"
 					/>
 				</n-form-item>
@@ -35,7 +35,13 @@
 					/>
 				</n-form-item>
 				<n-space :vertical="true" :size="24">
-					<div class="flex-y-center justify-between">
+					<div
+						style="
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+						"
+					>
 						<n-checkbox v-model:checked="rememberMe"
 							>记住我</n-checkbox
 						>
@@ -61,6 +67,7 @@
 
 <script setup lang="ts">
 import { useGlobalStore } from '@/store/GlobalStore'
+import { login } from '@/api/User/login'
 const router = useRouter()
 const store = useGlobalStore()
 const studentNavList = [
@@ -99,8 +106,8 @@ const handleUpdateValue = (val: any) => {
 	console.log(val)
 }
 const model = reactive({
-	userName: '',
-	password: '',
+	username: '',
+	pwd: '',
 	role: '0',
 })
 const options = [
@@ -121,13 +128,13 @@ const handleScroll = (e: any) => {
 	console.log(e)
 }
 const rules = reactive({
-	userName: [
+	username: [
 		{
 			required: true,
 			message: '请输入用户名',
 		},
 	],
-	password: [
+	pwd: [
 		{
 			required: true,
 			message: '请输入密码',
@@ -142,11 +149,25 @@ const handleSubmit = async () => {
 		ElMessage.error('请选择身份')
 		return
 	}
-	router.push('/')
-	store.IsLogin = true
-	store.NavList = model.role === '1' ? studentNavList : teacherNavList
-	store.userInfo.role = model.role
-	console.log(store.NavList)
+	login({
+		username: model.username,
+		pwd: model.pwd,
+	}).then((res) => {
+		if (res.code === 200) {
+			// @ts-ignore
+			ElMessage.success('登录成功')
+			store.IsLogin = true
+			store.NavList = model.role === '1' ? studentNavList : teacherNavList
+			store.userInfo.role = model.role
+			console.log(store.NavList)
+			setTimeout(() => {
+				router.push('/')
+			}, 1000)
+		} else {
+			// @ts-ignore
+			ElMessage.error('密码或用户名错误')
+		}
+	})
 }
 </script>
 

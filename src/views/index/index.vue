@@ -3,7 +3,12 @@
 		title="欢迎登录物理实验信息提交系统!"
 		:style="{ textAlign: 'center', marginTop: '20px', fontSize: '23px' }"
 	>
-		<n-card title="您当前登录类型" hoverable :style="{ width: '200px' }">
+		<n-card
+			title="您当前登录类型"
+			hoverable
+			:style="{ width: '200px', fontSize: '14px' }"
+			class="login-type"
+		>
 			{{ userStore.userInfo.role === '1' ? '学生用户' : '教师用户' }}
 			13123
 		</n-card>
@@ -23,6 +28,6 @@ const userStore = useGlobalStore()
 
 <style lang="less" scoped>
 :deep(.n-card-header__main) {
-	font-size: 25px;
+	font-size: 20px;
 }
 </style>
